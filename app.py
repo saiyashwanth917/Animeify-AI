@@ -8,7 +8,7 @@ from torchvision.transforms.functional import to_tensor, to_pil_image
 
 from model import Generator
 
-st.set_page_config(page_title="GAN Room Studio", page_icon="🎨", layout="wide")
+st.set_page_config(page_title="Animeify AI", page_icon="🎨", layout="wide")
 
 BASE = Path(__file__).parent
 STYLES = {
@@ -35,7 +35,7 @@ def stylize(img: Image.Image, weight_file: str) -> Image.Image:
     return to_pil_image(y)
 
 
-st.title("🎨 GAN Room Studio")
+st.title("🎨 Animeify AI")
 st.caption("Turn a room photo into an artistic version using a pretrained GAN (AnimeGANv2).")
 
 style = st.sidebar.selectbox("Art style", list(STYLES))
@@ -49,11 +49,11 @@ if uploaded:
     left.image(img, width="stretch")
     with st.spinner("Generating..."):
         out = stylize(img, STYLES[style])
-    right.subheader("GAN output")
+    right.subheader(" Animeify AI output")
     right.image(out, width="stretch")
     buf = io.BytesIO()
     out.save(buf, format="PNG")
-    right.download_button("Download", buf.getvalue(), "gan_room.png", "image/png")
+    right.download_button("Download", buf.getvalue(), "Animeify AI.png", "image/png")
 else:
     st.info("Upload a room photo to begin.")
 
